@@ -1,4 +1,4 @@
-package fragment;
+package fragments;
 
 /**
  * Created by hazem on 11/26/15.

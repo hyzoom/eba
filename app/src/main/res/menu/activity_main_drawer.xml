@@ -18,15 +18,15 @@
             android:id="@+id/nav_committees"
             android:icon="@drawable/ic_menu_manage"
             android:title="Committees" />
-
-        <item
-            android:id="@+id/nav_members"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Members" />
         <item
             android:id="@+id/nav_councils"
             android:icon="@drawable/ic_menu_share"
             android:title="Councils" />
+        <item
+            android:id="@+id/nav_members"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Members" />
+
         <item
             android:id="@+id/nav_annual_reports"
             android:icon="@drawable/ic_menu_send"

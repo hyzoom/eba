@@ -4,20 +4,26 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fragments.BoardFragment;
+import fragments.EventFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,15 +104,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+//        Toast.makeText(getApplicationContext(), ">> " + id, Toast.LENGTH_LONG).show();
+
         if (id == R.id.nav_events) {
-//            EventFragment fragment = new EventFragment();
-//            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.frame, fragment);
-//            fragmentTransaction.commit();
-        } else if (id == R.id.nav_news) {
-
+            fragment = new EventFragment();
         } else if (id == R.id.nav_board) {
-
+            fragment = new BoardFragment();
         } else if (id == R.id.nav_committees) {
 
         } else if (id == R.id.nav_councils) {
@@ -117,6 +120,16 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_about_us) {
 
+        }
+
+        if (fragment != null) {
+
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame_container, fragment);
+            fragmentTransaction.commit();
+        } else {
+            // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
